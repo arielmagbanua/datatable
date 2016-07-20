@@ -3,28 +3,49 @@
 <head>
 	<title>Data Table</title>
 
-	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" >
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.12/r-2.1.0/datatables.min.css"/>
 </head>
 <body>
 
-	<div class="container">
-		<table>
-			<caption>table title and/or explanatory text</caption>
+	<div class="container-fluid">
+
+		<h1>Data Table</h1>
+		<br>	
+		<table id="employees_table" class="table">
+			
 			<thead>
 				<tr>
-					<th>header</th>
+					<th>Name</th>
+	                <th>Position</th>
+	                <th>Office</th>
+	                <th>Extn.</th>
+	                <th>Start date</th>
+	                <th>Salary</th>
 				</tr>
 			</thead>
-			<tbody>
-				<tr>
-					<td>data</td>
-				</tr>
-			</tbody>
+			<tbody></tbody>
 		</table>
+		
 	</div>
 
 	<script src="bower_components/jquery/dist/jquery.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.12/r-2.1.0/datatables.min.js"></script>
+	
+	<script>
+		$(document).ready(function($) 
+		{
+			$('#employees_table').DataTable({
+				'processing': true,
+				'ajax': 
+				{
+					url: 'datasets/test.json',
+					type: 'GET',
+				}
+			});
+		});
+	</script>
 </body>
 </html>
